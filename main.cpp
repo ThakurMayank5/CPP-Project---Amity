@@ -159,14 +159,12 @@ vector<Flight> readFlightsFromFile()
         return {};
     }
 
-    if (filein.peek() == std::ifstream::traits_type::eof())
+    if (filein.peek() == ifstream::traits_type::eof())
     {
         return {};
     }
 
     vector<Flight> flightList;
-
-    int count = 0;
 
     while (!filein.eof())
     {
@@ -196,11 +194,11 @@ int main()
 {
     while (true)
     {
-        std::cout << "Menu:\n1. Display Flights\n2. Add Flight\n3. Exit\n";
-        std::cout << "Enter your choice: ";
+        cout << "Menu:\n1. Display Flights\n2. Add Flight\n3. Exit\n";
+        cout << "Enter your choice: ";
 
         int choice;
-        std::cin >> choice;
+        cin >> choice;
 
         if (choice == 3)
             break;
@@ -209,51 +207,51 @@ int main()
         {
         case 1:
         {
-            std::cout << "Displaying all flights:" << std::endl;
+            cout << "Displaying all flights:" << endl;
             const vector<Flight> flights = readFlightsFromFile();
             if (flights.empty())
             {
-                std::cout << "No flights available." << std::endl;
+                cout << "No flights available." << endl;
             }
             else
             {
                 for (const Flight &flight : flights)
                 {
                     flight.display();
-                    std::cout << "------------------------" << std::endl;
+                    cout << "------------------------" << endl;
                 }
             }
             break;
         }
         case 2:
         {
-            std::cout << "Adding a new flight:" << std::endl;
+            cout << "Adding a new flight:" << endl;
             int fno, seats;
             double fare;
             string fname, src, dest, type;
 
-            std::cout << "Enter Flight Number: ";
-            std::cin >> fno;
-            std::cout << "Enter Flight Name: ";
-            std::cin >> fname;
-            std::cout << "Enter Source: ";
-            std::cin >> src;
-            std::cout << "Enter Destination: ";
-            std::cin >> dest;
-            std::cout << "Enter Seats: ";
-            std::cin >> seats;
-            std::cout << "Enter Base Fare: ";
-            std::cin >> fare;
-            std::cout << "Enter Type (Domestic/International): ";
+            cout << "Enter Flight Number: ";
+            cin >> fno;
+            cout << "Enter Flight Name: ";
+            cin >> fname;
+            cout << "Enter Source: ";
+            cin >> src;
+            cout << "Enter Destination: ";
+            cin >> dest;
+            cout << "Enter Seats: ";
+            cin >> seats;
+            cout << "Enter Base Fare: ";
+            cin >> fare;
+            cout << "Enter Type (Domestic/International): ";
 
             while (true)
             {
-                std::cin >> type;
+                cin >> type;
                 if (type == "Domestic" || type == "International")
                 {
                     break;
                 }
-                std::cout << "Invalid type. Please enter Domestic or International: ";
+                cout << "Invalid type. Please enter Domestic or International: ";
             }
 
             Flight newFlight(fno, fname, src, dest, seats, fare, type);
@@ -262,7 +260,7 @@ int main()
             break;
         }
         default:
-            std::cout << "Invalid choice!" << std::endl;
+            cout << "Invalid choice" << endl;
         }
     }
 
