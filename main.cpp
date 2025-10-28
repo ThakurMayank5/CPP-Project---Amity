@@ -179,13 +179,13 @@ vector<Flight> readFlightsFromFile()
 
         if (type == "Domestic")
         {
-            DomesticFlight *flight = new DomesticFlight(fno, name, src, dest, seats, fare);
-            flightList.push_back(*flight);
+            DomesticFlight flight(fno, name, src, dest, seats, fare);
+            flightList.push_back(flight);
         }
         else if (type == "International")
         {
-            InternationalFlight *flight = new InternationalFlight(fno, name, src, dest, seats, fare);
-            flightList.push_back(*flight);
+            InternationalFlight flight(fno, name, src, dest, seats, fare);
+            flightList.push_back(flight);
         }
     }
 
@@ -256,8 +256,8 @@ int main()
                 std::cout << "Invalid type. Please enter Domestic or International: ";
             }
 
-            Flight *newFlight = new Flight(fno, fname, src, dest, seats, fare, type);
-            saveFlightToFile(newFlight);
+            Flight newFlight(fno, fname, src, dest, seats, fare, type);
+            saveFlightToFile(&newFlight);
 
             break;
         }
